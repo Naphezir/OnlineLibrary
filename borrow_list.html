@@ -1,0 +1,30 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Borrowing{% endblock %}
+
+{% block content %}
+
+      {%if msg %}
+      <h1> {{msg}}</h1>
+      {% endif %}
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for product in products %}
+            <div class="col">
+              <div class="card">
+                <img src="{{ url_for('static', filename=product.cover) }}" alt="sample product image">
+                <div class="card-body">
+                  <p class="card-text">{{product.author}}</p>
+                  <p class="card-text">{{product.title}}</p>
+                  <p class="card-text">Availability: <span>{{product.availability}} szt.</span></p>
+                    {% if product.availability > 0 %}
+                  <a href="{{ url_for('borrow', id=product.id) }}"><button type="submit" class="btn btn-warning" style="width: 100%">Borrow</button></a>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <h1>No products to edit</h1>
+          {% endfor %}
+      </div>
+{% endblock %}

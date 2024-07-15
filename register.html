@@ -1,0 +1,13 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Zaloguj się{% endblock %}
+
+{% block content %}
+
+{%if msg %}
+<h1>{{msg}}</h1>
+{% endif %}
+
+{{ render_form(form, novalidate=True) }}
+
+{% endblock %}

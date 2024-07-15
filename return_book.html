@@ -1,0 +1,26 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Oddaj książkę{% endblock %}
+
+{% block content %}
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        <div class="col">
+          <p>Zwracana książka:</p>
+          <div class="card">
+            <img src="{{ url_for('static', filename=product.okladka) }}" alt="" width="100%" height="100%">
+            <div class="card-body">
+              <p class="card-text">{{product.tytul}}</p>
+              <p class="card-text">{{product.autor}}</p>
+            </div>
+          </div>
+        </div>
+        </div>
+        <form action="{{ url_for('return_book') }}" method="POST">
+            <input hidden="hidden" name="id" value="{{product.id}}">
+            <button type="submit" class="btn btn-warning">ZWRÓĆ</button>
+            <button type="submit" class="btn btn-danger" name="cancel">Anuluj</button>
+        </form>
+
+{% endblock %}

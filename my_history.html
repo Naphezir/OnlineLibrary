@@ -1,0 +1,30 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Borrowings history{% endblock %}
+
+{% block content %}
+
+      {%if msg %}
+      <h1> {{msg}}</h1>
+      {% endif %}
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for my_book in my_borrowings %}
+            <div class="col">
+              <div class="card">
+                <img src="{{ url_for('static', filename=my_book[2]) }}" alt="sample product image">
+                <div class="card-body">
+                  <p class="card-text">{{my_book[0]}}</p>
+                  <p class="card-text">{{my_book[1]}}</p>
+                  <p class="card-text">Borrowing date: <span>{{my_book[3]}}</span></p>
+                    {% if my_book[4] %}
+                  <p class="card-text">Return date: <span>{{my_book[4]}}</span></p>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <h1>No borrowed books yet!</h1>
+          {% endfor %}
+      </div>
+{% endblock %}

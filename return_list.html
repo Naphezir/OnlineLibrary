@@ -1,0 +1,27 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Return books{% endblock %}
+
+{% block content %}
+
+      {%if msg %}
+      <h1> {{msg}}</h1>
+      {% endif %}
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for p in products %}
+            <div class="col">
+              <div class="card">
+                <img src="{{ url_for('static', filename=p.cover) }}" alt="sample product image">
+                <div class="card-body">
+                  <p class="card-text">{{p.author}}</p>
+                  <p class="card-text">{{p.title}}</p>
+                  <a href="{{ url_for('return_book', id=p.id) }}"><button type="submit" class="btn btn-danger" style="width: 100%">Return a book</button></a>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <h1>No books to return</h1>
+          {% endfor %}
+      </div>
+{% endblock %}

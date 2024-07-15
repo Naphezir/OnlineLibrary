@@ -1,0 +1,63 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+
+      <div class="flex-container" style="flex-direction: column">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+            <p>Reviews for:</p>
+            <div class="card">
+              <img src="{{ url_for('static', filename=product.cover) }}" alt="" width="100%" height="100%">
+              <div class="card-body">
+                <p class="card-text">{{product.title}}</p>
+                <p class="card-text">{{product.author}}</p>
+              </div>
+            </div>
+          </div>
+        {% if x %}
+          <div class="col" style="width: 600px">
+                <form action="{{ url_for('review') }}" method="POST">
+                    <input hidden="hidden" name="id" value="{{product.id}}">
+                    <label for="rating" class="form-label">Your rating:</label><span id="rating_value"></span>
+                    <input type="range" class="form-range" min="0" max="10" step="1" id="rating" name="rating">
+                    <button type="submit" class="btn btn-primary">RATE</button>
+                </form>
+                <form action="{{ url_for('review') }}" method="POST">
+                    <input hidden="hidden" name="id" value="{{product.id}}">
+                        <div class="input-group">
+                            <span class="input-group-text">Review</span>
+                            <textarea class="form-control" aria-label="With textarea" id="the_review" name="the_review"></textarea>
+                        </div>
+                    <button type="submit" class="btn btn-primary" name="the_review">Leave a review</button>
+                    <button type="submit" class="btn btn-danger" name="cancel">Cancel</button>
+                </form>
+          </div>
+        {% endif %}
+        </div>
+      </div>
+      <div class="row">
+          <h2>Average book rating: {{mean}}</h2>
+      </div>
+
+      <div class="row">
+          <h2>Users' reviews:</h2>
+          {% for r in reviews %}
+                {% if r.review != None %}
+                <hr><p>Review written by: {{r.review_author}}</p><p>{{r.review}}</p>
+                {% endif %}
+          {% else %}
+            <h1>No reviews for selected book.</h1>
+          {% endfor %}
+      </div>
+
+<script>
+    const provided_value = document.getElementById('rating');
+    const slider_rating_value = document.getElementById('rating_value');
+
+    provided_value.addEventListener('input', function () {
+        rating_value.textContent = " " + provided_value.value;
+    });
+</script>
+{% endblock %}

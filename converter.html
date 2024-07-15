@@ -1,0 +1,14 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Konwerter{% endblock %}
+
+{% block content %}
+
+<h1>Paste an EDI format invoice to convert it to an actual invoice</h1>
+{%if msg %}
+<h1>{{msg}}</h1>
+{% endif %}
+
+{{ render_form(form, novalidate=True) }}
+
+{% endblock %}

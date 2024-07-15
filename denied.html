@@ -1,0 +1,17 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Online Library{% endblock %}
+
+{% block content %}
+
+{%if msg %}
+<h1>{{msg}}</h1>
+{% endif %}
+
+{% if edimsg %}
+<h1>Here is your invoice in EDI format:<br></h1>
+<h3>{{edimsg}}</h3>
+<h1><br>COPY it and save!</h1>
+{% endif %}
+
+{% endblock %}

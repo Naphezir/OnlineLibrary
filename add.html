@@ -1,0 +1,9 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Dodaj produkt{% endblock %}
+
+{% block content %}
+
+{{ render_form(form, novalidate=True) }}
+
+{% endblock %}

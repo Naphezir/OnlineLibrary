@@ -1,0 +1,30 @@
+{% extends 'baza.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Online Library{% endblock %}
+
+{% block content %}
+
+      {%if msg %}
+      <h1> {{msg | safe}} </h1>
+      {% endif %}
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for product in products %}
+            <div class="col">
+              <div class="card">
+                <a href="{{url_for('review', id=product.id)}}">
+                  <img src="{{ url_for('static', filename=product.cover) }}" alt="sample product image">
+                </a>
+                <div class="card-body">
+                  <p class="card-text">{{product.title}}</p>
+                  <p class="card-text">{{product.author}}</p>
+                  <p class="card-text">Availability: <span>{{product.availability}} pcs.</span></p>
+                </div>
+              </div>
+
+            </div>
+          {% else %}
+            <h1>No books yet :(</h1>
+          {% endfor %}
+      </div>
+{% endblock %}
