@@ -1,0 +1,67 @@
+body {
+    background-color: blanchedalmond;
+}
+
+svg {
+    margin-right: 2px;
+    height: 30px;
+    width: auto;
+}
+
+.the_picture {
+    margin: 5px;
+    height: 200px;
+}
+
+form {
+    margin: 2% 5%;
+}
+
+.row {
+    margin: 1% 1%;
+}
+
+.footer {
+    margin: 0% 2%;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: brown;
+}
+h1 {
+    margin: 1% 2% 2% 2%;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: brown;
+}
+
+h2 {
+    color: purple;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h3 {
+    color: purple;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 50%;
+    word-wrap: break-word;
+}
+
+img {
+    height: auto;
+    width: 200px;
+    margin: 5px;
+}
+
+.col {
+    width: auto;
+}
+
+.input-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 0px
+}
+
+.card {
+    max-width: 300px;
+}
